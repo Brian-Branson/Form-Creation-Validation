@@ -1,0 +1,43 @@
+document.addEventListener('DOMContentLoaded', () => {
+console.log('DOM fully loaded and parsed');
+const form =document.getElementById('form');
+const feedbackDiv = document.getElementById('feedback'); 
+ form.addEventListener('submit'), function(event) {
+    event.preventDefault(); 
+    
+ };
+
+const username = document.getElementById('username').value.trim();
+const password = document.getElementById('password').value.trim();
+const email = document.getElementById('email').value.trim();
+
+let isValid = true;
+let messages = [];
+
+if (username.length <3) {
+    isValid = false;
+    messages.push('Username must be at least 3 characters long.');
+}
+if (!email.includes('@') || !email.includes('.')) {
+    isValid = false;
+    messages.push('Please enter a valid email address.'); }
+
+if (password.length < 8){ 
+    isValid = false;
+    messages.push('Password must be at least 8 characters long.');}
+
+if (isValid = true) {
+  feedbackDiv.style.display = 'block';
+  feedbackDiv.textContent = 'Registration successful!';
+  feedbackDiv.style.color = '#28a745';}
+
+if (isValid = false) {
+  feedbackDiv.innerHTML = messages.join("<br>");
+  feedbackDiv.style.color = "#dc3545";
+}
+
+
+
+    });
+
+
